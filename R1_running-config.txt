@@ -1,0 +1,97 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname cuneyt
+!
+!
+!
+enable secret 5 $1$mERr$WvpW0n5HghRrqnrwXCUUl.
+enable password 7 082259400C0011
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username admin privilege 15 secret 5 $1$mERr$SpMzkMdf3l8pEDAYSKBRr0
+username erkan password 7 08344F4F1B
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name ctis
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet6/0
+ ip address 192.168.1.129 255.255.255.192
+!
+interface FastEthernet7/0
+ ip address 192.168.1.193 255.255.255.224
+ duplex auto
+ speed auto
+!
+interface FastEthernet8/0
+ ip address 192.168.1.225 255.255.255.240
+ duplex auto
+ speed auto
+!
+interface FastEthernet9/0
+ ip address 192.168.1.1 255.255.255.128
+ duplex auto
+ speed auto
+!
+router rip
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd #Unauthorized Access is not allowed!#
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 5 0
+ password 7 08294D40061400131B0A
+ logging synchronous
+ login
+!
+line aux 0
+!
+line vty 0 4
+ exec-timeout 5 0
+ password 7 082259400C0011
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ password 7 082259400C0011
+ login local
+ transport input ssh
+!
+!
+!
+end
+
